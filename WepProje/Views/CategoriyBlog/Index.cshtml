@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WepProje.Models.KtgBlogModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row ">
+
+
+    @foreach (var blog in Model)
+    {
+
+    <a href="/CategoriyBlog/KategoriBlog/@blog.Id" class="col-md-3 col-xl-3 mt-3">
+
+        <div class="card">
+            <img class="card-img-top" src="/Content/CategoryImg/@blog.KategoriResim" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title"> @blog.CategoriAdi</h4>
+
+            </div>
+        </div>
+
+    </a>
+    }
+
+</div>
+

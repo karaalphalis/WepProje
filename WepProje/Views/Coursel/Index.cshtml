@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WepProje.Models.BlogModel>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+<h3>Benzer Videolar</h3>
+<div class="owl-carousel owl-theme">
+
+    @foreach (var blg in Model)
+    {
+        <div class="item">
+            <a href="/Blog/Details/@blg.Id">
+                <div class="card">
+                    <img class="card-img-top" src="/Content/img/@blg.Resim" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title"> @blg.Baslik</h4>
+                        <p class="card-text">@blg.Aciklama</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        
+    }
+</div>
+

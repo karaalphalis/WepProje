@@ -1,0 +1,47 @@
+﻿@model IPagedList<WepProje.Models.Blog>
+
+@{
+    ViewBag.Title = "KategoriBlog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList;
+@using PagedList.Mvc;
+
+
+<div class="row ">
+
+
+    @foreach (var blog in Model)
+    {
+        <a href="/Blog/Details/@blog.Id" class="col-md-3">
+
+            <div class="blog">
+                <h6 class="page-header">
+
+                    @blog.Baslik
+                </h6>
+                <p style="font-size:small">
+                    <span class="glyphicon glyphicon-time"></span>
+                    @blog.EklenmeTarihi
+
+                </p>
+                <p>
+                    <img marginheight="0" marginwidth="0" width="100%" height="100%" src="/Content/img/@blog.Resim" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></img>
+                </p>
+
+
+                <hr />
+                <p style="font-size:small"> @blog.Aciklama</p>
+
+            </div>
+
+        </a>
+    }
+
+
+
+</div>
+@Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Home", new { SayfaNo = _sayfaNo }))
+<footer>
+    @Html.Action("Index", "Coursel")
+</footer>

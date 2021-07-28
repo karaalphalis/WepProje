@@ -1,0 +1,46 @@
+﻿
+@model IPagedList<WepProje.Models.BlogModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using PagedList;
+@using PagedList.Mvc;
+
+
+<div class="row ">
+
+
+    @foreach (var blog in Model)
+    {
+
+    <a href="/Blog/Details/@blog.Id" class="col-md-3 mt-3"  >
+        
+        <div class="card">
+            <img class="card-img-top" src="/Content/img/@blog.Resim" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title"> @blog.Baslik</h4>
+                <p class="card-text">@blog.Aciklama</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> @blog.EklenmeTarihi</small>
+            </div>
+        </div>
+
+    </a>
+
+    }
+
+
+
+
+
+
+
+
+
+
+</div>
+
+@Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Home", new { SayfaNo = _sayfaNo }))

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<WepProje.Models.Blog>
+
+@{
+    ViewBag.Title = "Details";
+
+}
+
+<div>
+
+    @foreach (var blog in Model)
+    {
+
+
+        <div class="blog col-md-9">
+            <h6 class="page-header">
+
+                @blog.Baslik
+            </h6>
+            <p style="font-size:small">
+                <span class="glyphicon glyphicon-time"></span>
+                @blog.EklenmeTarihi
+
+            </p>
+            <p>
+
+                <iframe class="image" marginheight="0" marginwidth="0" src="@blog.Video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            </p>
+
+            <hr />
+            <p style="font-size:small"> @blog.Aciklama</p>
+
+        </div>
+        <div class="card col-md-10">
+            <iframe class="card-img-top" src="@blog.Video" ></iframe>
+            <div>
+                <h4 class="card-title"> @blog.Baslik</h4>
+                <p class="card-text">@blog.Aciklama</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> @blog.EklenmeTarihi</small>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="/Content/img/@blog.Resim" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title"> @blog.Baslik</h4>
+                <p class="card-text">@blog.Aciklama</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> @blog.EklenmeTarihi</small>
+            </div>
+        </div>
+
+    }
+</div>
+
+<script>
+    function autosize() {
+        var windowSize = $(window).width();
+
+        if (windowSize < 500) {
+            $(".image").height(280).width(280).css({
+                cursor: "auto",
+            });
+        }
+        else if (windowSize >= 900) {
+            $(".image").height(400).width(750).css({
+                cursor: "auto",
+            });
+        }
+        else if (windowSize >= 600) {
+            $(".image").height(400).width(560).css({
+                cursor: "auto",
+            });
+        }
+        else if (windowSize >= 500) {
+            $(".image").height(400).width(500).css({
+                cursor: "auto",
+            });
+        }
+    }
+
+    // Execute on load
+    autosize();
+    // Bind event listener
+    $(window).resize(autosize);
+</script>
